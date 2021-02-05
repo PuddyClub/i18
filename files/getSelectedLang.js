@@ -2,9 +2,9 @@ module.exports = function (value) {
 
     // Selected Value
     let selectedValue;
-    if(typeof value) {
+    if(typeof value === "string") {
         selectedValue = value;
-    } else {
+    } else if (typeof this.userLang === "string") {
         selectedValue = this.userLang;
     }
 

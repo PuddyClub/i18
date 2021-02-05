@@ -1,4 +1,12 @@
-module.exports = function (local, lang) {
+module.exports = function (local, langSelected) {
+
+    // Selected Value
+    let lang;
+    if (typeof langSelected === "string") {
+        lang = langSelected;
+    } else if (typeof this.userLang === "string") {
+        lang = this.userLang;
+    }
 
     // Obj Type
     const objType = require('@tinypudding/puddy-lib/get/objType');
