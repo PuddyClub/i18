@@ -1,4 +1,4 @@
-module.exports = function (option) {
+module.exports = function (selectedValue) {
 
     // Prepare List
     const optionsList = [];
@@ -20,7 +20,7 @@ module.exports = function (option) {
             }
 
             // Is Selected
-            if (this.list[item].value === option) {
+            if (typeof selectedValue === "string" && this.list[item].value === selectedValue) {
                 insertData.selected = true;
             } else {
                 insertData.selected = false;
