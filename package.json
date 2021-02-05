@@ -1,6 +1,6 @@
 {
   "name": "@tinypudding/i18",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "i18 Lib from the Tiny Pudding Repositories.",
   "main": "index.js",
   "scripts": {

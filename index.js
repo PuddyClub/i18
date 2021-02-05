@@ -9,6 +9,9 @@ class i18 {
     // Get Lang List
     getLangList() { return this.list; }
 
+    // Get Lang List
+    getDefaultLang() { return this.defaultLang; }
+
     // Get Selected Lang
     getSelectedLang() { return require('./files/getSelectedLang').apply(this, arguments); }
 
