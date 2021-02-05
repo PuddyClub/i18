@@ -1,4 +1,12 @@
-module.exports = function (selectedValue) {
+module.exports = function (value) {
+
+    // Selected Value
+    let selectedValue;
+    if(typeof value) {
+        selectedValue = value;
+    } else {
+        selectedValue = this.userLang;
+    }
 
     // Prepare List
     const optionsList = [];
