@@ -1,0 +1,22 @@
+{
+  "name": "i18",
+  "version": "1.0.0",
+  "description": "i18 Lib from the Tiny Pudding Repositories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TinyPudding/i18.git"
+  },
+  "keywords": [
+    "i18"
+  ],
+  "author": "Yasmin Seidel (JasminDreasond)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TinyPudding/i18/issues"
+  },
+  "homepage": "https://github.com/TinyPudding/i18#readme"
+}
