@@ -12,6 +12,9 @@ class i18 {
     // Get Selected Lang
     getSelectedLang() { return require('./files/getSelectedLang').apply(this, arguments); }
 
+    // Get User Lang
+    getUserLang() { return require('./files/getUserLang').apply(this, arguments); }
+
 }
 
 module.exports = i18;
