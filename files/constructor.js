@@ -3,8 +3,11 @@ module.exports = function (data) {
     // Lodash Module
     const _ = require('lodash');
 
+    // Obj Type
+    const objType = require('@tinypudding/puddy-lib/get/objType');
+
     const tinyCfg = _.defaultsDeep({}, data, {
-        
+
         // Default Lang
         defaultLang: 'en',
 
@@ -19,9 +22,17 @@ module.exports = function (data) {
     });
 
     // Set Config
-    this.loader = tinyCfg.loader;
-    this.defaultLang = tinyCfg.defaultLang;
-    this.list = tinyCfg.list;
+    if (typeof tinyCfg.loader === "function") {
+        this.loader = tinyCfg.loader;
+    }
+
+    if (typeof tinyCfg.loader === "string") {
+        this.defaultLang = tinyCfg.defaultLang;
+    }
+
+    if (objType(tinyCfg.list, 'object')) {
+        this.list = tinyCfg.list;
+    }
 
     // Complete
     return this;
