@@ -12,13 +12,16 @@ module.exports = function (data) {
         loader: function (local, lang) {
             console.log('Test File Load from: "./' + this.config.defaultLang + '/' + local + '.json"');
             return {};
-        }
+        },
+
+        list: {}
 
     });
 
     // Set Config
     this.loader = tinyCfg.loader;
     this.defaultLang = tinyCfg.defaultLang;
+    this.list = tinyCfg.list;
 
     // Complete
     return this;

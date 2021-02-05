@@ -7,7 +7,7 @@ class i18 {
     getFile() { return require('./files/getFile').apply(this, arguments); }
 
     // Get Lang List
-    getLangList() { return require('./files/getLangList').apply(this, arguments); }
+    getLangList() { return this.list; }
 
     // Get Selected Lang
     getSelectedLang() { return require('./files/getSelectedLang').apply(this, arguments); }
