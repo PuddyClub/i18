@@ -9,11 +9,11 @@ module.exports = function (data) {
 
     // User Session
     if (typeof data.user === "string") {
-        tinyResult.now = data.user;
-        tinyResult.user = data.user;
+        tinyResult.now = data.user.replace(/\//g, '').replace(/\\/g, '');
+        tinyResult.user = tinyResult.now;
     } else if (typeof data.session === "string") {
-        tinyResult.now = data.session;
-        tinyResult.session = data.session;
+        tinyResult.now = data.session.replace(/\//g, '').replace(/\\/g, '');
+        tinyResult.session = tinyResult.now;
     }
 
     // User Lang
