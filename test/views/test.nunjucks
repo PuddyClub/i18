@@ -11,13 +11,45 @@
 
         <script>
             var csrfToken = '';
+            const setLang = {{i18ClientRequest | safe}};
         </script>
 
     </head>
 
     <body>
 
-        Mio!
+        {# TImezone #}
+        <select class="custom-select mx-2 w-auto" id="select_lang">
+            <option value="auto">Select a Language</option>
+            {% for item in i18List %}
+                {% if item.selected %}
+                    <option value="{{ item.value }}" selected>{{ item.name }}</option>
+                {% else %}
+                    <option value="{{ item.value }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <script>
+            $('#select_lang').change(function () {
+
+                const tinyvalue = $(this).val();
+                if (tinyvalue) {
+
+                    $.LoadingOverlay("show", {background: "rgba(0,0,0, 0.5)"});
+                    setLang('lang', tinyvalue, csrfToken)
+                        .then(() => {
+                            location.reload();
+                        })
+                        .catch(err => {
+                            $.LoadingOverlay("hide");
+                            alert(err.message);
+                        });
+
+                }
+
+            });
+        </script>
 
     </body>
 

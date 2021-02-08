@@ -23,7 +23,7 @@ module.exports = async function (req, res, isUser = false, csrfToken = {
 
                 // No User
                 if(!isUser) {
-                    req.session[tinyThis.data.varsSession.sessionLang] = req.body.value;
+                    req.session[this.varsSession.sessionLang] = req.body.value;
                 }
 
                 // Yep

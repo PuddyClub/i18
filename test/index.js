@@ -100,7 +100,7 @@ app.all('/', bodyParseN, (req, res) => {
     console.groupEnd();
 
     // Render Page
-    return res.render('test', { i18: req.i18, i18ClientRequest: req.i18.getClientWeb() });
+    return res.render('test', { i18List: req.i18.getSelectedLang(), i18ClientRequest: req.i18.getClientWeb() });
 
 });
 
