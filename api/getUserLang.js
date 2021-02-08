@@ -7,8 +7,6 @@ module.exports = function (data) {
         session: this.defaultLang
     };
 
-
-
     // Is User
     if (data.isUser && (data.isUser === "on" || data.isUser === "true" || data.isUser === true)) {
 
