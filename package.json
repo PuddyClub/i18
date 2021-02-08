@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/TinyPudding/i18#readme",
   "dependencies": {
-    "@tinypudding/puddy-lib": "^1.1.10",
+    "@tinypudding/puddy-lib": "^1.1.13",
     "lodash": "^4.17.20"
   }
 }
