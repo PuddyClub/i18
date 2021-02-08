@@ -1,5 +1,5 @@
     // i18 test
-    const i18 = require('../index');
+    const i18 = require('../files/index');
     const lang = new i18({
         defaultLang: 'en',
         loader: function (local, lang) {
