@@ -4,6 +4,9 @@ class i18 {
     constructor() { return require('./constructor').apply(this, arguments); }
 
     // Get Lang File
+    setLang() { return require('./setLang').apply(this, arguments); }
+
+    // Get Lang File
     getFile() { return require('./getFile').apply(this, arguments); }
 
     // Get Lang List
