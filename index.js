@@ -17,7 +17,7 @@ class expressTimezone {
         });
 
         // Prepare Module
-        this.module = require('./files');
+        this.module = require('./api');
 
         // Complete
         return this;
