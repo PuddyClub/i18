@@ -11,6 +11,13 @@ module.exports = function (data) {
         // Default Lang
         defaultLang: 'en',
 
+        // Vars Session Names
+        varsSession: {
+            sessionLang: 'sessionLang',
+            userLang: 'userLang',
+            nowLang: 'nowLang'
+        },
+
         // Loader
         loader: function (local, lang) {
             console.log('Test File Load from: "./' + this.config.defaultLang + '/' + local + '.json"');
@@ -24,6 +31,10 @@ module.exports = function (data) {
     // Set Config
     if (typeof tinyCfg.loader === "function") {
         this.loader = tinyCfg.loader;
+    }
+
+    if(typeof tinyCfg.varsSession === "string") {
+        this.varsSession = tinyCfg.varsSession;
     }
 
     if (typeof tinyCfg.loader === "string") {

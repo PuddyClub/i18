@@ -1,20 +1,28 @@
-class expressTimezone {
+class expressI18 {
 
     // Constructor
-    constructor(app, data) {
+    constructor(app, data = {}, getCsrfToken = function (req, res) {
+        return {
+            now: '',
+            server: ''
+        };
+    }) {
 
         // Insert App
         this.app = app;
+        this.getCsrfToken = getCsrfToken;
 
         // Lodash Module
         const _ = require('lodash');
         this.data = _.defaultsDeep({}, data, {
 
             // Vars Session Names
-            varsSession: {
-                sessionLang: 'sessionLang',
-                userLang: 'userLang',
-                nowLang: 'nowLang'
+            cfg: {
+                varsSession: {
+                    sessionLang: 'sessionLang',
+                    userLang: 'userLang',
+                    nowLang: 'nowLang'
+                }
             },
 
             // URLs
@@ -43,14 +51,14 @@ class expressTimezone {
 
             // Get User Lang
             const userLang = tinyThis.module.getUserLang({
-                session: req.session[tinyCfg.varsSession.sessionLang],
-                user: req.session[tinyCfg.varsSession.userLang]
+                session: req.session[tinyThis.data.cfg.varsSession.sessionLang],
+                user: req.session[tinyThis.data.cfg.varsSession.userLang]
             });
 
             // Set Session
-            req.session[tinyCfg.varsSession.sessionLang] = userLang.session;
-            req.session[tinyCfg.varsSession.userLang] = userLang.user;
-            req.session[tinyCfg.varsSession.nowLang] = userLang.now;
+            req.session[tinyThis.data.cfg.varsSession.sessionLang] = userLang.session;
+            req.session[tinyThis.data.cfg.varsSession.userLang] = userLang.user;
+            req.session[tinyThis.data.cfg.varsSession.nowLang] = userLang.now;
 
             // Complete
             next();
@@ -77,4 +85,4 @@ class expressTimezone {
 
 };
 
-module.exports = expressTimezone;
+module.exports = expressI18;
