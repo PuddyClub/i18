@@ -12,7 +12,8 @@ module.exports = function (data) {
         varsSession: {
             sessionLang: 'sessionLang',
             userLang: 'userLang',
-            nowLang: 'nowLang'
+            nowLang: 'nowLang',
+            langIsUser: 'langIsUser'
         },
 
         // Loader

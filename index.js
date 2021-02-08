@@ -16,7 +16,8 @@ class expressI18 {
                 varsSession: {
                     sessionLang: 'sessionLang',
                     userLang: 'userLang',
-                    nowLang: 'nowLang'
+                    nowLang: 'nowLang',
+                    langIsUser: 'langIsUser'
                 },
 
                 // URLs
@@ -32,11 +33,6 @@ class expressI18 {
                     now: '',
                     server: ''
                 };
-            },
-
-            // Get Is User
-            getIsUser: function (req) {
-                return false;
             }
 
         });
@@ -61,7 +57,8 @@ class expressI18 {
             // Get User Lang
             const userLang = tinyThis.module.getUserLang({
                 session: req.session[tinyThis.data.cfg.varsSession.sessionLang],
-                user: req.session[tinyThis.data.cfg.varsSession.userLang]
+                user: req.session[tinyThis.data.cfg.varsSession.userLang],
+                isUser: req.session[tinyThis.data.cfg.varsSession.langIsUser]
             });
 
             // Set Session
@@ -71,6 +68,7 @@ class expressI18 {
 
             // Module
             req.i18 = tinyThis.module;
+            req.i18IsUser = userLang.isUser;
 
             // Complete
             next();
@@ -90,7 +88,6 @@ class expressI18 {
 
             // Send Request
             const csrfToken = await tinyThis.data.getCsrfToken(req, res);
-            const isUser = await tinyThis.data.getIsUser(req);
             req.i18.setLang.apply(req.i18, [req, res, isUser, csrfToken]);
 
             // Complete

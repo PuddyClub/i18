@@ -44,7 +44,8 @@ const i18Express = new i18(app, {
         varsSession: {
             sessionLang: 'sessionLang',
             userLang: 'userLang',
-            nowLang: 'nowLang'
+            nowLang: 'nowLang',
+            langIsUser: 'langIsUser'
         },
 
         // Lang List
@@ -74,11 +75,6 @@ const i18Express = new i18(app, {
         });
     },
 
-    // Get Is User
-    getIsUser: function (req) {
-        return false;
-    },
-
     // URLs
     urls: {
         setLang: '/setLang'
@@ -96,6 +92,7 @@ app.all('/', bodyParseN, (req, res) => {
 
     // Req
     console.log(req.i18);
+    console.log(req.session);
 
     console.groupEnd();
 

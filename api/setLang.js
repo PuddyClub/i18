@@ -1,4 +1,4 @@
-module.exports = async function (req, res, isUser = false, csrfToken = {
+module.exports = async function (req, res, csrfToken = {
     server: '',
     now: ''
 }) {
@@ -22,7 +22,7 @@ module.exports = async function (req, res, isUser = false, csrfToken = {
             if (this.list.find(lang => lang.value === req.body.value)) {
 
                 // No User
-                if(!isUser) {
+                if(!req.i18IsUser) {
                     req.session[this.varsSession.sessionLang] = req.body.value;
                 }
 

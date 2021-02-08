@@ -16,6 +16,15 @@ module.exports = function (data) {
         tinyResult.session = tinyResult.now;
     }
 
+    // Is User
+    if (data.isUser === "on" || data.isUser === "true" || data.isUser === true) {
+        tinyResult.isUser = true;
+        this.isUser = true;
+    } else {
+        tinyResult.isUser = false;
+        this.isUser = true;
+    }
+
     // User Lang
     this.userLang = tinyResult.now;
 
