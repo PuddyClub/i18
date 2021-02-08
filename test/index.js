@@ -99,7 +99,9 @@ app.all('/', bodyParseN, (req, res) => {
 
     console.groupEnd();
 
-    return res.render('test');
+    // Render Page
+    return res.render('test', { i18: req.i18, i18ClientRequest: req.i18.getClientWeb() });
+
 });
 
 // Start Timezone Module

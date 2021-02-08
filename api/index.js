@@ -21,6 +21,9 @@ class i18 {
     // Get User Lang
     getUserLang() { return require('./getUserLang').apply(this, arguments); }
 
+    // Get Client Web
+    getClientWeb() { return require('./clientWeb').apply(this, arguments); }
+
 }
 
 module.exports = i18;

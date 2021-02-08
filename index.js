@@ -12,11 +12,18 @@ class expressI18 {
 
             // Vars Session Names
             cfg: {
+
                 varsSession: {
                     sessionLang: 'sessionLang',
                     userLang: 'userLang',
                     nowLang: 'nowLang'
-                }
+                },
+
+                // URLs
+                urls: {
+                    setLang: '/setLang'
+                },
+
             },
 
             // Get CSRF Token
@@ -30,12 +37,7 @@ class expressI18 {
             // Get Is User
             getIsUser: function (req) {
                 return false;
-            },
-
-            // URLs
-            urls: {
-                setLang: '/setLang'
-            },
+            }
 
         });
 
@@ -84,7 +86,7 @@ class expressI18 {
         const tinyThis = this;
 
         // Set Cookie
-        this.app.post(this.data.urls.setLang, async function (req, res) {
+        this.app.post(this.data.cfg.urls.setLang, async function (req, res) {
 
             // Send Request
             const csrfToken = await tinyThis.data.getCsrfToken(req, res);

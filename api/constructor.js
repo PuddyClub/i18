@@ -24,6 +24,11 @@ module.exports = function (data) {
             return {};
         },
 
+        // URLs
+        urls: {
+            setLang: '/setLang'
+        },
+
         // Lang List
         list: []
 
@@ -34,17 +39,20 @@ module.exports = function (data) {
         this.loader = tinyCfg.loader;
     }
 
-    if(typeof tinyCfg.varsSession === "string") {
-        this.varsSession = tinyCfg.varsSession;
-    }
+    // Vars Session
+    this.varsSession = tinyCfg.varsSession;
 
-    if (typeof tinyCfg.loader === "string") {
+    // Default Lang
+    if (typeof tinyCfg.defaultLang === "string") {
         this.defaultLang = tinyCfg.defaultLang;
     }
 
     if (Array.isArray(tinyCfg.list)) {
         this.list = tinyCfg.list;
     }
+
+    // URLs
+    this.urls = tinyCfg.urls;
 
     // Complete
     return this;
