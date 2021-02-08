@@ -3,9 +3,6 @@ module.exports = function (data) {
     // Lodash Module
     const _ = require('lodash');
 
-    // Obj Type
-    const objType = require('@tinypudding/puddy-lib/get/objType');
-
     const tinyCfg = _.defaultsDeep({}, data, {
 
         // Default Lang
