@@ -88,7 +88,7 @@ class expressI18 {
 
             // Send Request
             const csrfToken = await tinyThis.data.getCsrfToken(req, res);
-            req.i18.setLang.apply(req.i18, [req, res, isUser, csrfToken]);
+            req.i18.setLang.apply(req.i18, [req, res, csrfToken]);
 
             // Complete
             return;

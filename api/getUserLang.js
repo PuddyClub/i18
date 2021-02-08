@@ -17,12 +17,12 @@ module.exports = function (data) {
     }
 
     // Is User
-    if (data.isUser === "on" || data.isUser === "true" || data.isUser === true) {
+    if (data.isUser && (data.isUser === "on" || data.isUser === "true" || data.isUser === true)) {
         tinyResult.isUser = true;
         this.isUser = true;
     } else {
         tinyResult.isUser = false;
-        this.isUser = true;
+        this.isUser = false;
     }
 
     // User Lang
