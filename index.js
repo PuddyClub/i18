@@ -8,16 +8,25 @@ class expressTimezone {
 
         // Lodash Module
         const _ = require('lodash');
-        this.cfg = _.defaultsDeep({}, data, {
-            varNames: {
+        this.data = _.defaultsDeep({}, data, {
+
+            // Vars Session Names
+            varsSession: {
                 sessionLang: 'sessionLang',
                 userLang: 'userLang',
                 nowLang: 'nowLang'
-            }
+            },
+
+            // URLs
+            urls: {
+                setLang: '/setLang'
+            },
+
         });
 
         // Prepare Module
-        this.module = require('./api');
+        const apiPrepare = require('./api');
+        this.module = new apiPrepare(this.data.cfg);
 
         // Complete
         return this;
@@ -33,21 +42,37 @@ class expressTimezone {
         return (req, res, next) => {
 
             // Get User Lang
-            const userLang = tinyThis.i18.getUserLang({
-                session: req.session[tinyCfg.varNames.sessionLang],
-                user: req.session[tinyCfg.varNames.userLang]
+            const userLang = tinyThis.module.getUserLang({
+                session: req.session[tinyCfg.varsSession.sessionLang],
+                user: req.session[tinyCfg.varsSession.userLang]
             });
 
             // Set Session
-            req.session[tinyCfg.varNames.sessionLang] = userLang.session;
-            req.session[tinyCfg.varNames.userLang] = userLang.user;
-            req.session[tinyCfg.varNames.nowLang] = userLang.now;
+            req.session[tinyCfg.varsSession.sessionLang] = userLang.session;
+            req.session[tinyCfg.varsSession.userLang] = userLang.user;
+            req.session[tinyCfg.varsSession.nowLang] = userLang.now;
 
             // Complete
             next();
             return;
 
         };
+    }
+
+    // Start Module
+    start() {
+
+        // Get This
+        const tinyThis = this;
+
+        // Set Cookie
+        this.app.post(this.data.urls.setLang, async function (req, res) {
+
+            // Complete
+            return;
+
+        });
+
     }
 
 };
