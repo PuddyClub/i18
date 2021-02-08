@@ -41,7 +41,7 @@ module.exports = function (data) {
         this.defaultLang = tinyCfg.defaultLang;
     }
 
-    if (objType(tinyCfg.list, 'object')) {
+    if (Array.isArray(tinyCfg.list) || objType(tinyCfg.list, 'object')) {
         this.list = tinyCfg.list;
     }
 
