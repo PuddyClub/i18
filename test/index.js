@@ -39,11 +39,20 @@ const i18Express = new i18(app, {
 
     // Vars Session Names
     cfg: {
+
+        // Vars Sessions
         varsSession: {
             sessionLang: 'sessionLang',
             userLang: 'userLang',
             nowLang: 'nowLang'
-        }
+        },
+
+        // Lang List
+        list: [
+            { value: 'en', name: 'English' },
+            { value: 'pt-br', name: 'Português Brasil' }
+        ]
+
     },
 
     // Get CSRF Token
