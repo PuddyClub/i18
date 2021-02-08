@@ -24,7 +24,8 @@ module.exports = function (data) {
             return {};
         },
 
-        list: {}
+        // Lang List
+        list: []
 
     });
 
