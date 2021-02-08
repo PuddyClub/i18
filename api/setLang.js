@@ -1,4 +1,4 @@
-module.exports = async function (req, isUser = false, res, csrfToken = {
+module.exports = async function (req, res, isUser = false, csrfToken = {
     server: '',
     now: ''
 }) {

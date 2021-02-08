@@ -1,16 +1,10 @@
 class expressI18 {
 
     // Constructor
-    constructor(app, data = {}, getCsrfToken = function (req, res) {
-        return {
-            now: '',
-            server: ''
-        };
-    }) {
+    constructor(app, data = {}) {
 
         // Insert App
         this.app = app;
-        this.getCsrfToken = getCsrfToken;
 
         // Lodash Module
         const _ = require('lodash');
@@ -23,6 +17,19 @@ class expressI18 {
                     userLang: 'userLang',
                     nowLang: 'nowLang'
                 }
+            },
+
+            // Get CSRF Token
+            getCsrfToken: function (req, res) {
+                return {
+                    now: '',
+                    server: ''
+                };
+            },
+
+            // Get Is User
+            getIsUser: function (req) {
+                return false;
             },
 
             // URLs
@@ -60,6 +67,9 @@ class expressI18 {
             req.session[tinyThis.data.cfg.varsSession.userLang] = userLang.user;
             req.session[tinyThis.data.cfg.varsSession.nowLang] = userLang.now;
 
+            // Module
+            req.i18 = tinyThis.module;
+
             // Complete
             next();
             return;
@@ -75,6 +85,11 @@ class expressI18 {
 
         // Set Cookie
         this.app.post(this.data.urls.setLang, async function (req, res) {
+
+            // Send Request
+            const csrfToken = await tinyThis.data.getCsrfToken(req, res);
+            const isUser = await tinyThis.data.getIsUser(req);
+            req.i18.setLang(req, res, isUser, csrfToken);
 
             // Complete
             return;
