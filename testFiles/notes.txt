@@ -1,0 +1,15 @@
+req.i18.getFile();
+getLangList();
+getDefaultLang();
+getSelectedLang();
+getUserLang();
+getClientWeb();
+req.i18IsUser;
+
+
+        // Prepare Global
+        req.globalItems = {
+            lang: req.i18.getFile('global'),
+            i18List: req.i18.getSelectedLang(), 
+            i18ClientRequest: req.i18.getClientWeb(),
+        };
