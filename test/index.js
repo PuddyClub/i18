@@ -44,8 +44,7 @@ const i18Express = new i18(app, {
         varsSession: {
             sessionLang: 'sessionLang',
             userLang: 'userLang',
-            nowLang: 'nowLang',
-            langIsUser: 'langIsUser'
+            nowLang: 'nowLang'
         },
 
         // Lang List

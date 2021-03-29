@@ -16,8 +16,7 @@ class expressI18 {
                 varsSession: {
                     sessionLang: 'sessionLang',
                     userLang: 'userLang',
-                    nowLang: 'nowLang',
-                    langIsUser: 'langIsUser'
+                    nowLang: 'nowLang'
                 },
 
                 // URLs
@@ -50,16 +49,20 @@ class expressI18 {
     getModule() { return this.module; }
 
     // Insert Express
-    insert() {
+    insert(checkIsUser) {
         const tinyThis = this;
-        return (req, res, next) => {
+        return async (req, res, next) => {
 
             // Get User Lang
             const userLang = tinyThis.module.getUserLang({
                 session: req.session[tinyThis.data.cfg.varsSession.sessionLang],
-                user: req.session[tinyThis.data.cfg.varsSession.userLang],
-                isUser: req.session[tinyThis.data.cfg.varsSession.langIsUser]
+                user: req.session[tinyThis.data.cfg.varsSession.userLang]
             });
+
+            // Check Is User
+            if (typeof checkIsUser === "function") { userLang.isUser = await checkIsUser(req, res); }
+            else if (typeof checkIsUser === "boolean") { userLang.isUser = checkIsUser; }
+            if (typeof userLang.isUser !== "boolean") { userLang.isUser = false; }
 
             // Set Session
             req.session[tinyThis.data.cfg.varsSession.sessionLang] = userLang.session;
