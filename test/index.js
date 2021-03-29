@@ -81,7 +81,8 @@ const i18Express = new i18(app, {
 
 });
 
-app.use(i18Express.insert());
+// The value false is that the user session is false
+app.use(i18Express.insert(false));
 
 // Homepage
 app.all('/', bodyParseN, (req, res) => {
