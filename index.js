@@ -53,16 +53,19 @@ class expressI18 {
         const tinyThis = this;
         return async (req, res, next) => {
 
+            // Is User
+            let isUser = false;
+
+            // Check Is User
+            if (typeof checkIsUser === "function") { isUser = await checkIsUser(req, res); }
+            else if (typeof checkIsUser === "boolean") { isUser = checkIsUser; }
+
             // Get User Lang
             const userLang = tinyThis.module.getUserLang({
                 session: req.session[tinyThis.data.cfg.varsSession.sessionLang],
-                user: req.session[tinyThis.data.cfg.varsSession.userLang]
+                user: req.session[tinyThis.data.cfg.varsSession.userLang],
+                isUser: isUser
             });
-
-            // Check Is User
-            if (typeof checkIsUser === "function") { userLang.isUser = await checkIsUser(req, res); }
-            else if (typeof checkIsUser === "boolean") { userLang.isUser = checkIsUser; }
-            if (typeof userLang.isUser !== "boolean") { userLang.isUser = false; }
 
             // Set Session
             req.session[tinyThis.data.cfg.varsSession.sessionLang] = userLang.session;
