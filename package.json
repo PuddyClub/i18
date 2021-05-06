@@ -1,6 +1,6 @@
 {
   "name": "@tinypudding/i18",
-  "version": "1.3.2",
+  "version": "1.3.4",
   "description": "i18 Lib from the Tiny Pudding Repositories.",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/TinyPudding/i18#readme",
   "dependencies": {
-    "@tinypudding/puddy-lib": "^1.1.13",
+    "@tinypudding/puddy-lib": "^1.1.29",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
