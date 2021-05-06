@@ -21,7 +21,7 @@
   "homepage": "https://github.com/TinyPudding/i18#readme",
   "dependencies": {
     "@tinypudding/puddy-lib": "^1.1.13",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
